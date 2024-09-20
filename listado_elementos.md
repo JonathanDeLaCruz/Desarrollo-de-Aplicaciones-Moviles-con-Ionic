@@ -48,7 +48,7 @@
     * Creamos un array para guardar los elementos.
     
     ```
-    alumnos:any = [];`
+    alumnos:any = [];
     ```
     * Configuramos el ngOnInit
 
