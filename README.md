@@ -1,6 +1,6 @@
-# Tutorial de Desarrollo de Aplicaciones Móviles con Ionic y Angular
+# 📱 Desarrollo de Aplicaciones Móviles con Ionic y Angular
 
-Bienvenido a este tutorial donde aprenderás a desarrollar aplicaciones móviles utilizando **Ionic con Angular**. A lo largo de este repositorio, encontrarás ejemplos prácticos para gestionar elementos en una aplicación móvil.
+Bienvenido a este repositorio dedicado para la desarrollo de aplicaciones móviles utilizando **Ionic con Angular**. A lo largo de este repositorio, encontrarás ejemplos prácticos para gestionar elementos en una aplicación móvil.
 
 ## 📌 Requisitos Previos
 Antes de comenzar, asegúrate de tener instalados los siguientes programas:
