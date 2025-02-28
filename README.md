@@ -6,7 +6,6 @@ Bienvenido a este tutorial donde aprenderás a desarrollar aplicaciones móviles
 Antes de comenzar, asegúrate de tener instalados los siguientes programas:
 
 - [Node.js](https://nodejs.org/) (Versión recomendada: 20 o superior)
-- [Ionic CLI](https://ionicframework.com/) → Instalar con `npm install -g @ionic/cli`
 - Un editor de código (Recomendado: [VS Code](https://code.visualstudio.com/))
 
 ## 🚀 Instalación y Configuración
@@ -52,6 +51,6 @@ Este tutorial está dividido en varias secciones para facilitar el aprendizaje:
 Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
 
 ## 👤 Autor
-Creado por **[M.T.I. Jonathan De La Cruz Alvarez]** – [Tu GitHub](https://github.com/JonathanDeLaCruz)
+Creado por **[M.T.I. Jonathan De La Cruz Alvarez](https://github.com/JonathanDeLaCruz)**
 
 Si tienes dudas o sugerencias, no dudes en abrir un issue o un pull request. ¡Feliz programación! 🚀
