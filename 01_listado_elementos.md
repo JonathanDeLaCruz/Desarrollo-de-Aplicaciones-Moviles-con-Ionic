@@ -2,7 +2,7 @@
 
 1. Configuración en cada uno de los controladores de Yii2.
 
-    ```
+    ```php
     public function behaviors()
     {
         $behaviors = parent::behaviors();
@@ -24,7 +24,7 @@
 
     `npm i axios`
 
-    [Axios](https://axios-http.com/es/) es un Cliente HTTP basado en promesas para node.js y el navegador. Es isomórfico (= puede ejecutarse en el navegador y nodejs con el mismo código base). En el lado del servidor usa el módulo nativo http de node.js, mientras que en el lado del cliente (navegador) usa XMLHttpRequests.
+    [Axios](https://axios-http.com/es/) es un Cliente HTTP basado en promesas para Node.js y el navegador. Es isomórfico, lo que significa que puede ejecutarse en el navegador y en Node.js con el mismo código base. En el lado del servidor usa el módulo nativo HTTP de Node.js, mientras que en el lado del cliente (navegador) usa XMLHttpRequests.
 
 3. Configurar en el archivo *page.ts*
     * Importamos el componente **LoadingController**
@@ -37,44 +37,44 @@
     
     * Configuración del constructor
 
-    El [constructor](https://medium.com/zurvin/cu%C3%A1l-es-la-diferencia-entre-ngoninit-y-constructor-en-angular-2f7ce3d986b7) es propio de una clase en EcmaScript6 y por ende JavaScript llama al constructor antes que a ninguno, lo que significa que no es un buen lugar para ‘avisarle’ a angular que ha terminado de inicializar el componente. Es aquí, dentro del constructor, donde podemos aprovechar y decirle qué dependencias necesitamos cargar.
+    El [constructor](https://medium.com/zurvin/cu%C3%A1l-es-la-diferencia-entre-ngoninit-y-constructor-en-angular-2f7ce3d986b7) es propio de una clase en ECMAScript 6 y, por ende, JavaScript llama al constructor antes que a cualquier otro método. Esto significa que no es un buen lugar para indicarle a Angular que ha terminado de inicializar el componente. Es aquí donde podemos especificar qué dependencias necesitamos cargar.
     
-    ```
+    ```typescript
     constructor(
-        private loadingCtrl : LoadingController,
+        private loadingCtrl: LoadingController,
     ) {}
     ```
 
     * Creamos un array para guardar los elementos.
     
+    ```typescript
+    alumnos: any = [];
     ```
-    alumnos:any = [];
-    ```
-    * Configuramos el ngOnInit
+    * Configuramos el **ngOnInit**
 
-    ```
+    ```typescript
     ngOnInit() {
         this.cargarAlumnos();
     }
     ```
 
-    * Creamos la función asíncrona **CargarAlumnos**
+    * Creamos la función asíncrona **cargarAlumnos**
 
-    ```
+    ```typescript
     async cargarAlumnos(event?: InfiniteScrollCustomEvent) {
         const loading = await this.loadingCtrl.create({
-            message : 'Cargando',
-            spinner : 'bubbles',
+            message: 'Cargando',
+            spinner: 'bubbles',
         });
         await loading.present();
         const response = await axios({
             method: 'get',
-            url : "http://clases.test/user-alumno",
+            url: "http://clases.test/user-alumno",
             withCredentials: true,
             headers: {
                 'Accept': 'application/json'
             }
-        }).then( (response) => {
+        }).then((response) => {
             this.alumnos = response.data;
             event?.target.complete();
         }).catch(function (error) {
@@ -85,7 +85,7 @@
     ```
 4. Configuramos el **page.html**
 
-    ```
+    ```html
     <ion-list>
         <ion-item button *ngFor="let alumno of alumnos">
         <ion-avatar slot="start">
