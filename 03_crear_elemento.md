@@ -72,7 +72,7 @@
     ```html
     <ion-fab slot="fixed" vertical="bottom" horizontal="center">
         <ion-fab-button (click)="new()">
-        <ion-icon name="add"></ion-icon>
+            <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
     ```
@@ -82,9 +82,9 @@
     ```typescript
     async new() {
         const paginaModal = await this.modalCrtl.create({
-        component: NewPage,
-        breakpoints : [0, 0.3, 0.5, 0.95],
-        initialBreakpoint: 0.95
+            component: NewPage,
+            breakpoints : [0, 0.3, 0.5, 0.95],
+            initialBreakpoint: 0.95
         });
         await paginaModal.present();
     }
@@ -162,16 +162,16 @@
     ```typescript
     async cargarCarreras() {
         const response = await axios({
-        method: 'get',
-        url : this.carreraUrl,
-        withCredentials: true,
-        headers: {
-            'Accept': 'application/json'
-        }
+            method: 'get',
+            url : this.carreraUrl,
+            withCredentials: true,
+            headers: {
+                'Accept': 'application/json'
+            }
         }).then( (response) => {
-        this.carreras = response.data;
+            this.carreras = response.data;
         }).catch(function (error) {
-        console.log(error);     
+            console.log(error);     
         });
     }
     ```
@@ -212,20 +212,20 @@
             url : this.baseUrl,
             data: alumno,
             headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer 100-token'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer 100-token'
             }
         }).then( (response) => {
             if(response?.status == 201) {
-            this.alertGuardado(response.data.alu_matricula, 'El alumno con matricula ' + response.data.alu_matricula + ' ha sido registrada');
+                this.alertGuardado(response.data.alu_matricula, 'El alumno con matricula ' + response.data.alu_matricula + ' ha sido registrada');
             }
         }).catch( (error) => {
             if(error?.response?.status == 422) {
-            this.alertGuardado(alumno.alu_matricula, error?.response?.data[0]?.message, "Error");
+                this.alertGuardado(alumno.alu_matricula, error?.response?.data[0]?.message, "Error");
             }     
         });
         } catch(e){
-        console.log(e);
+            console.log(e);
         }
     }
     ```
@@ -237,7 +237,7 @@
         let errors: any[] = [];
         const control = this.alumno.get(controlName);
         if (control?.touched && control?.errors != null) {
-        errors = JSON.parse(JSON.stringify(control?.errors));
+            errors = JSON.parse(JSON.stringify(control?.errors));
         }
         return errors;
     }
@@ -248,25 +248,24 @@
     ```typescript
     private async alertGuardado(matricula: String, msg = "",  subMsg= "Guardado") {
         const alert = await this.alert.create({
-        header: 'Alumno',
-        subHeader: subMsg,
-        message: msg,
-        cssClass: 'alert-center',
-        buttons: [
-            {
-            text: 'Continuar',
-            role: 'cancel',
-            },
-            {
-            text: 'Salir',
-            role: 'confirm',
-            handler: () => {
-                this.modalCtrl.dismiss();
-            },
-            },
-        ],
+            header: 'Alumno',
+            subHeader: subMsg,
+            message: msg,
+            cssClass: 'alert-center',
+            buttons: [
+                {
+                    text: 'Continuar',
+                    role: 'cancel',
+                },
+                {
+                    text: 'Salir',
+                    role: 'confirm',
+                    handler: () => {
+                        this.modalCtrl.dismiss();
+                    },
+                },
+            ],
         });
-
         await alert.present();
     }
     ```
