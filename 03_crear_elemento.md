@@ -81,7 +81,7 @@
 
     ```typescript
     async new() {
-        const paginaModal = await this.modalCrtl.create({
+        const paginaModal = await this.modalCtrl.create({
             component: NewPage,
             breakpoints : [0, 0.3, 0.5, 0.95],
             initialBreakpoint: 0.95
