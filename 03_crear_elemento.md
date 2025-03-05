@@ -87,6 +87,9 @@
             initialBreakpoint: 0.95
         });
         await paginaModal.present();
+        paginaModal.onDidDismiss().then((data) => {
+            this.cargarAlumnos();
+        });
     }
     ```
     * **NewPage** es el nombre de la clase de la página donde estará nuestro formulario
