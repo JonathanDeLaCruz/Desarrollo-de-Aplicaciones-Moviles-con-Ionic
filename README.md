@@ -46,6 +46,7 @@ Este tutorial está dividido en varias secciones para facilitar el aprendizaje:
 4. **[Actualizar un Elemento](04_actualizar_elemento.md)** – Modificar elementos existentes.
 5. **[Eliminar un Elemento](05_eliminar_elemento.md)** – Implementación de la función de eliminación.
 6. **[Fuentes y Estilos](06_fuentes_estilos.md)** – Personalización de la UI con fuentes y estilos.
+7. **[Componentes](07_componentes.md)** – Creación de un componente.
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
