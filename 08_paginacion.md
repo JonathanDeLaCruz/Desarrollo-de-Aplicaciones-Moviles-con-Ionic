@@ -1,4 +1,6 @@
-# Modificaciones en Yii2
+# Creación de Componente Paginación
+
+## Modificaciones en Yii2
 
 1. Creamos en el **controller**
 
