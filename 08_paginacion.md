@@ -32,7 +32,7 @@ public function actionTotal($text) {
 ],
 ```
 
-# Creación de componente Paginación
+## Componente Paginación
 
 1. Creamos un nuevo componente con el comando
 
