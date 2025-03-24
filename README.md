@@ -47,6 +47,7 @@ Este tutorial está dividido en varias secciones para facilitar el aprendizaje:
 5. **[Eliminar un Elemento](05_eliminar_elemento.md)** – Implementación de la función de eliminación.
 6. **[Fuentes y Estilos](06_fuentes_estilos.md)** – Personalización de la UI con fuentes y estilos.
 7. **[Componentes](07_componentes.md)** – Creación de un componente.
+8. **[Componente de Paginación](08_paginacion.md)** – Creación de un componente de paginación.
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
