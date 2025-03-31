@@ -236,14 +236,23 @@ onClickSlide(index: number) {
   background-color: transparent;
   color: white;
   border: none;
-  margin: 0 5px;
+  margin: 0 auto; // Centra el contenedor horizontalmente 
   padding: 8px 16px;
-  transition: background-color 0.3s;
   text-align: center;
+  display: flex; // Activa el diseño de flexbox 
+  justify-content: center; // Alinea los botones horizontalmente 
+  align-items: center; // Centra los botones verticalmente 
+}
+
+.swiper-wrapper {
+  display: flex; // Asegura que los elementos estén en una fila 
+  flex-direction: row; // Alinea los elementos en una fila horizontal 
+  gap: 10px; // Espaciado entre los botones 
 }
 
 .swiper-slide {
-  background-color: var(--ion-color-personalizado);
+  background-color: #f0f0f0; // Fondo claro para mejor visibilidad 
+  color: #333; // Texto oscuro para contraste 
   width: 40px !important;
   height: 40px !important;
   border-radius: 50%;
@@ -251,16 +260,19 @@ onClickSlide(index: number) {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-  margin: 0 5px;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  margin: 0; // Asegúrate de que no haya márgenes que desplacen los botones 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Sombra para resaltar los botones 
+}
+
+.swiper-slide:hover {
+  background-color: #e0e0e0; // Fondo más claro al pasar el cursor 
 }
 
 .active {
-  background-color: var(--ion-color-success);
-}
-
-.swiper-slide:active {
-  transform: scale(1.2);
+  background-color: var(--ion-color-success); // Fondo verde para el botón activo 
+  color: white; // Texto blanco para contraste 
+  font-weight: bold; // Resalta el texto del botón activo 
 }
 ```
 
