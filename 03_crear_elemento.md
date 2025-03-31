@@ -345,7 +345,7 @@
                         <ion-item>
                             <ion-label position="floating" color="primary">Sexo</ion-label>
                             <ion-select formControlName="alu_sexo" class="form-control">
-                                <ion-select-option *ngFor="let sexo of sexos" value="{{sexo.sex_id}}">
+                                <ion-select-option *ngFor="let sexo of sexos" [value]="sexo.sex_id">
                                     {{ sexo.sex_sexo }}
                                 </ion-select-option>
                             </ion-select>
@@ -360,7 +360,7 @@
                         <ion-item>
                             <ion-label position="floating" color="primary">Carrera</ion-label>
                             <ion-select formControlName="alu_fkcarrera" class="form-control">
-                                <ion-select-option *ngFor="let carrera of carreras" value="{{carrera.CAR_CVE}}">
+                                <ion-select-option *ngFor="let carrera of carreras" [value]="carrera.CAR_CVE">
                                     {{ carrera.CAR_NOM }}
                                 </ion-select-option>
                             </ion-select>
