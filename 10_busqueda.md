@@ -73,7 +73,27 @@ handleInput(event:any) {
 3. Modificamos la funcion cargarElementos()
 
 ```ts
-
+async cargarAlumnos(event?: InfiniteScrollCustomEvent) {
+    const loading = await this.loadingCtrl.create({
+        message: 'Cargando',
+        spinner: 'bubbles',
+    });
+    await loading.present();
+    const response = await axios({
+        method: 'get',
+        url: enverioment.apiUrl + "user-alumno/buscar/"+this.busqueda,
+        withCredentials: true,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then((response) => {
+        this.alumnos = response.data;
+        event?.target.complete();
+    }).catch(function (error) {
+        console.log(error);     
+    });
+    loading.dismiss();
+}
 ```
 
 4. Agregamos en el page.html el componente ion-searchbar
