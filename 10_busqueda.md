@@ -74,6 +74,10 @@ handleInput(event:any) {
 
 ```ts
 async cargarAlumnos(event?: InfiniteScrollCustomEvent) {
+    let url: string = enverioment.apiUrl + "user-alumno/buscar";
+    if(this.busqueda !== '') {
+        url += "/"+this.busqueda,
+    }
     const loading = await this.loadingCtrl.create({
         message: 'Cargando',
         spinner: 'bubbles',
@@ -81,7 +85,7 @@ async cargarAlumnos(event?: InfiniteScrollCustomEvent) {
     await loading.present();
     const response = await axios({
         method: 'get',
-        url: enverioment.apiUrl + "user-alumno/buscar/"+this.busqueda,
+        url: url
         withCredentials: true,
         headers: {
             'Accept': 'application/json'
