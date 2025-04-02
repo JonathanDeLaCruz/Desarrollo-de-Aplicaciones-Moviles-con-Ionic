@@ -49,6 +49,7 @@ Este tutorial está dividido en varias secciones para facilitar el aprendizaje:
 7. **[Componentes](07_componentes.md)** – Creación de un componente.
 8. **[Componente de Paginación](08_paginacion.md)** – Creación de un componente de paginación.
 9. **[Menú](09_menu.md)** – Menú de opciones.
+10. **[Búsqueda en una lista](10_busqueda.md)** – Búsqueda en una lista.
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
