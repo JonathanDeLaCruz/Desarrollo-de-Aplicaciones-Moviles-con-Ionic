@@ -51,6 +51,7 @@ Este tutorial está dividido en varias secciones para facilitar el aprendizaje:
 9. **[Menú](09_menu.md)** – Menú de opciones.
 10. **[Búsqueda en una lista](10_busqueda.md)** – Búsqueda en una lista.
 11. **[Servicios](11_servicios.md)** – Creación de un servicio.
+12. **[Inicio de sesión y registro de usuarios](12_login_registro.md)** – Creación de inicio de sesión y registro de usuarios.
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
