@@ -37,6 +37,8 @@ public function actionRegistrar() {
         $alumno->alu_fkcarrera = 0;
         if($alumno->save()) {
             $token = $user->auth_key;
+        } else {
+            return $usuario->errors;
         }
     } else {
         return $user;
