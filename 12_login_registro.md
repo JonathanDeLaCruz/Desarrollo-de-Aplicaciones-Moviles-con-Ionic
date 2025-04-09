@@ -82,7 +82,7 @@ class RegistroFrom extends Model
     'on afterLogin' => function ($event) {
         \webvimark\modules\UserManagement\models\UserVisitLog::newVisitor($event->identity->id);
     }
-]
+],
 ```
 
 - Agregamos dos **extraPatterns**
