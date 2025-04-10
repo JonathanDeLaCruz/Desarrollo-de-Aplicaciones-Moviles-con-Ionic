@@ -190,7 +190,7 @@ this.permisoService.permisos().subscribe(
 
 - Creamos el guards, recuerda seleccionar **canActivate**
 ```ts
-ionic g guards guard/permiso
+ionic g guard guard/permiso
 ```
 
 - Agregamos dentro del guards
