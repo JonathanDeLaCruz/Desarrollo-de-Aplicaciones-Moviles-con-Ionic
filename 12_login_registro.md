@@ -53,7 +53,7 @@ namespace app\models;
 
 use yii\base\Model;
 
-class RegistroFrom extends Model
+class RegistroForm extends Model
 {
     public $username;
     public $password;
