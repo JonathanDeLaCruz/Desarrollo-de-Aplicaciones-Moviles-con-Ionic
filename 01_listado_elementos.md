@@ -27,6 +27,17 @@
     [Axios](https://axios-http.com/es/) es un Cliente HTTP basado en promesas para Node.js y el navegador. Es isomórfico, lo que significa que puede ejecutarse en el navegador y en Node.js con el mismo código base. En el lado del servidor usa el módulo nativo HTTP de Node.js, mientras que en el lado del cliente (navegador) usa XMLHttpRequests.
 
 3. Configurar en el archivo *page.ts*
+    * Agregamos en el **@Component** la línea de *standalone : false*
+
+    ```typescript
+    @Component({
+      selector: 'app-root',
+      templateUrl: 'app.component.html',
+      styleUrls: ['app.component.scss'],
+      standalone: false,
+    })
+    ```
+    
     * Importamos el componente **LoadingController**
 
         `import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';`
@@ -83,7 +94,7 @@
         loading.dismiss();
     }
     ```
-4. Configuramos el **page.html**
+5. Configuramos el **page.html**
 
     ```html
     <ion-list>
