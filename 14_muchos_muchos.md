@@ -23,6 +23,13 @@
     materias: this.formBuilder.array([]),
     ```
 
+   * Getter para el FormArray
+    ```typescript
+    get materiasFA(): FormArray {
+       return this.alumno.get('materias') as FormArray;
+     }
+    ```
+
     * Métodos para añadir / quitar selects de materias
     ```typescript
     agregarMateria() {
@@ -85,7 +92,7 @@
     this.guardarMaterias(matriculaCreada);
     ```
 
-2. Configuramos el **page.html**
+1. Configuramos el **page.html**
 
     ```html
     <ion-col size="12" *ngIf="materiasCargadas">
