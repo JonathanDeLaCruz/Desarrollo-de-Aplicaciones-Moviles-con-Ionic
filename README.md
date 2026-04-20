@@ -54,6 +54,7 @@ Este tutorial está dividido en varias secciones para facilitar el aprendizaje:
 12. **[Inicio de sesión y registro de usuarios](12_login_registro.md)** – Creación de inicio de sesión y registro de usuarios.
 13. **[Guard](13_guard.md)** – Creación de un guard.
 14. **[Insertar elementos en tablas de muchos a muchos](14_muchos_muchos.md)** – Insertar elementos en tablas de muchos a muchos con Ionic.
+15. **[Subir Imagen desde Ionic hacia Yii2 API y Guardarla en Servidor](15_subir_archivos.md)** – Subir Imagen desde Ionic hacia Yii2 API y Guardarla en Servidor.
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
