@@ -392,3 +392,151 @@ networks:
 ```
 
 ---
+
+# 18. Subir el proyecto Yii2
+
+El proyecto Yii2 debe quedar en:
+
+```bash
+/srv/public_html/yii2-app
+```
+
+Ejemplo si se clona desde Git:
+
+```bash
+cd /srv/public_html
+git clone URL_DEL_REPOSITORIO yii2-app
+```
+
+La estructura esperada del proyecto debe ser similar a:
+
+```text
+/srv/public_html/yii2-app/
+├── assets/
+├── commands/
+├── config/
+├── controllers/
+├── models/
+├── runtime/
+├── vendor/
+├── views/
+├── web/
+│   └── index.php
+├── composer.json
+└── yii
+```
+
+---
+
+# 19. Instalar dependencias con Composer
+
+Si el proyecto no trae la carpeta `vendor`, ejecutar:
+
+```bash
+cd /srv/public_html/yii2-app
+docker run --rm -v "$PWD":/app composer:2 install --no-dev --optimize-autoloader
+```
+
+---
+
+# 20. Configurar permisos para Yii2
+
+Yii2 necesita permisos de escritura en `runtime` y `web/assets`.
+
+```bash
+sudo chown -R $USER:$USER /srv/public_html/yii2-app
+sudo chmod -R 775 /srv/public_html/yii2-app/runtime
+sudo chmod -R 775 /srv/public_html/yii2-app/web/assets
+```
+
+Como el contenedor PHP usa normalmente el usuario `www-data`, reforzar permisos con:
+
+```bash
+sudo chown -R 33:33 /srv/public_html/yii2-app/runtime
+sudo chown -R 33:33 /srv/public_html/yii2-app/web/assets
+```
+
+---
+
+# 21. Levantar el proyecto Yii2
+
+```bash
+cd /srv/dockers/yii2-app
+docker compose up -d --build
+```
+
+---
+
+# 22. Verificar contenedores activos
+
+```bash
+docker ps
+```
+
+Debe aparecer algo similar a:
+
+```text
+reverse-proxy
+yii2-nginx
+yii2-php
+```
+
+---
+
+# 23. Revisar logs
+
+Logs del reverse proxy:
+
+```bash
+docker logs -f reverse-proxy
+```
+
+Logs del Nginx interno de Yii2:
+
+```bash
+docker logs -f yii2-nginx
+```
+
+Logs de PHP:
+
+```bash
+docker logs -f yii2-php
+```
+
+---
+
+# 24. Probar desde el servidor
+
+```bash
+curl -I http://127.0.0.1
+```
+
+También puedes probar:
+
+```bash
+curl -I http://localhost
+```
+
+---
+
+# 25. Probar desde navegador
+
+Abrir en el navegador:
+
+```text
+http://IP_PUBLICA_DE_AZURE
+```
+
+Ejemplo:
+
+```text
+http://20.100.50.25
+```
+
+Debe cargar el proyecto Yii2 desde la carpeta:
+
+```text
+/srv/public_html/yii2-app/web
+```
+
+---
