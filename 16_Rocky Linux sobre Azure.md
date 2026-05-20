@@ -540,3 +540,186 @@ Debe cargar el proyecto Yii2 desde la carpeta:
 ```
 
 ---
+
+# Agregar MariaDB al proyecto Yii2 con Docker
+
+## 1. Crear carpeta para persistencia de MariaDB
+
+```bash
+mkdir -p /srv/dockers/yii2-app/mariadb
+```
+
+---
+
+## 2. Editar el docker-compose del proyecto Yii2
+
+Abrir el archivo:
+
+```bash
+nano /srv/dockers/yii2-app/docker-compose.yml
+```
+
+Reemplazar el contenido por este:
+
+```yaml
+services:
+  yii2-db:
+    image: mariadb:11.4
+    container_name: yii2-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: RootPasswordSeguro123
+      MARIADB_DATABASE: yii2_db
+      MARIADB_USER: yii2_user
+      MARIADB_PASSWORD: Yii2PasswordSeguro123
+    volumes:
+      - /srv/dockers/yii2-app/mariadb:/var/lib/mysql
+    networks:
+      - yii2-net
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  yii2-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yii2-php
+    restart: unless-stopped
+    depends_on:
+      yii2-db:
+        condition: service_healthy
+    volumes:
+      - /srv/public_html/yii2-app:/var/www/html
+    networks:
+      - yii2-net
+
+  yii2-nginx:
+    image: nginx:1.27-alpine
+    container_name: yii2-nginx
+    restart: unless-stopped
+    depends_on:
+      - yii2-php
+    volumes:
+      - /srv/public_html/yii2-app:/var/www/html:ro
+      - /srv/dockers/yii2-app/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - yii2-net
+      - proxy-net
+
+networks:
+  yii2-net:
+    driver: bridge
+
+  proxy-net:
+    external: true
+```
+
+---
+
+## 3. Cambiar contraseñas
+
+Antes de levantar el contenedor, cambia estos valores:
+
+```yaml
+MARIADB_ROOT_PASSWORD: RootPasswordSeguro123
+MARIADB_DATABASE: yii2_db
+MARIADB_USER: yii2_user
+MARIADB_PASSWORD: Yii2PasswordSeguro123
+```
+
+Ejemplo recomendado:
+
+```yaml
+MARIADB_ROOT_PASSWORD: Cambia_Esta_Root_2026
+MARIADB_DATABASE: sistema_db
+MARIADB_USER: sistema_user
+MARIADB_PASSWORD: Cambia_Esta_User_2026
+```
+
+---
+
+## 4. Levantar MariaDB junto con Yii2
+
+```bash
+cd /srv/dockers/yii2-app
+docker compose up -d --build
+```
+
+---
+
+## 5. Verificar que MariaDB esté activo
+
+```bash
+docker ps
+```
+
+Debe aparecer:
+
+```text
+yii2-db
+yii2-php
+yii2-nginx
+reverse-proxy
+```
+
+Revisar logs de MariaDB:
+
+```bash
+docker logs -f yii2-db
+```
+
+---
+
+## 6. Entrar a MariaDB desde el contenedor
+
+```bash
+docker exec -it yii2-db mariadb -u root -p
+```
+
+Te pedirá la contraseña definida en:
+
+```yaml
+MARIADB_ROOT_PASSWORD
+```
+
+Dentro de MariaDB puedes probar:
+
+```sql
+SHOW DATABASES;
+SELECT User, Host FROM mysql.user;
+```
+
+Para salir:
+
+```sql
+exit;
+```
+
+---
+
+# Nota importante
+
+No uses `localhost` en la configuración de Yii2.
+
+Dentro de Docker, Yii2 debe conectarse usando el nombre del servicio:
+
+```text
+yii2-db
+```
+
+Correcto:
+
+```php
+'dsn' => 'mysql:host=yii2-db;dbname=yii2_db;charset=utf8mb4',
+```
+
+Incorrecto:
+
+```php
+'dsn' => 'mysql:host=localhost;dbname=yii2_db;charset=utf8mb4',
+```
+
+Porque `localhost` dentro del contenedor `yii2-php` apunta al propio contenedor PHP, no al contenedor de MariaDB.
